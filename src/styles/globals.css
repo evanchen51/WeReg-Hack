@@ -1,3 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+html {
+   font-family: "Inter", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 0px;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes hue {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
