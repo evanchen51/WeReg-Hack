@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/unbound-method */
-import { type NextPage } from "next";
-import { useRef, useState } from "react";
-import { CLASSES, CURRENT_QUARTER, DEPT, QUARTERS, SCHEDULES } from "../data";
-import Image from "next/image"
 import { Formik } from "formik"
+import { type NextPage } from "next"
+import Image from "next/image"
+import { useRef, useState } from "react"
+import { CLASSES, CURRENT_QUARTER, DEPT, QUARTERS, SCHEDULES } from "../data"
 
 const Home: NextPage = () => {
   const [selectedQuarter, setSelectedQuarter] = useState(
@@ -514,20 +514,25 @@ const Home: NextPage = () => {
                         handleBlur,
                         handleSubmit,
                         isSubmitting,
-                        /* and other goodies */
                       }) => (
                         <form
                           onSubmit={handleSubmit}
-                          className="mt-8 h-8 w-[90%] flex flex-row"
+                          className="mt-9 flex h-8 w-[90%] flex-row"
                         >
-                          <input
-                            className="w-full rounded-2xl border-[1.5px] border-gray-400 bg-transparent "
-                            name="input"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.input}
-                          />
-                          <button type="submit" disabled={isSubmitting} className="pl-3 text-gray-500 text-lg">
+                          <div className="border-[1.5px] w-[90%] h-8 w-72 rounded-2xl border-gray-400 drop-shadow">
+                            <input
+                              className="ml-3 border-0 bg-transparent text-sm text-gray-400 focus:border-0 focus:outline-none"
+                              name="input"
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              value={values.input}
+                            />
+                          </div>
+                          <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="pl-3 text-lg text-gray-400 drop-shadow"
+                          >
                             search
                           </button>
                         </form>
