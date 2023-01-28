@@ -4,6 +4,7 @@ import { type NextPage } from "next";
 import { useRef, useState } from "react";
 import { CLASSES, CURRENT_QUARTER, DEPT, QUARTERS, SCHEDULES } from "../data";
 import Image from "next/image"
+import { Formik } from "formik"
 
 const Home: NextPage = () => {
   const [selectedQuarter, setSelectedQuarter] = useState(
@@ -40,16 +41,16 @@ const Home: NextPage = () => {
           className="relative flex h-screen flex-row flex-nowrap justify-evenly"
           ref={dom}
         >
-          <div className="flex w-[25%] flex-col flex-nowrap items-center">
-            <div className="rounded-lg px-1.5 pb-10 text-gray-800">
+          <div className="flex w-[25%] flex-col flex-nowrap items-start">
+            <div className="rounded-lg pl-8 pb-10 text-gray-800">
               <div className="rounded-lg px-1.5 pt-10 text-[2.25rem] font-semibold">
-                Hi <span className="underline">Bobby Wang,</span>
+                Hi <span className="underline">Greg,</span>
               </div>
               <div className="rounded-lg px-1.5 pt-2 text-[2.25rem] font-semibold">
                 this is your
               </div>
               <div className="rounded-lg px-1.5 pt-2 text-[3rem] font-black">
-                WebReg
+                WebReg!
               </div>
             </div>
 
@@ -479,6 +480,7 @@ const Home: NextPage = () => {
                   }`}
                 >
                   <div
+                    className="transition"
                     style={{
                       transform: `rotate(${searchToggle ? 180 : 0}deg)`,
                     }}
@@ -498,9 +500,41 @@ const Home: NextPage = () => {
               {/* Search */}
               {searchToggle && (
                 <div
-                  className="z-[0] h-[90vh] w-full"
+                  className="z-[0] flex h-[90vh] w-full flex-col items-center"
                   // border-y border-r border-gray-100
-                ></div>
+                >
+                  <div>
+                    <Formik
+                      initialValues={{ input: "" }}
+                      onSubmit={(values, { setSubmitting }) => {}}
+                    >
+                      {({
+                        values,
+                        handleChange,
+                        handleBlur,
+                        handleSubmit,
+                        isSubmitting,
+                        /* and other goodies */
+                      }) => (
+                        <form
+                          onSubmit={handleSubmit}
+                          className="mt-8 h-8 w-[90%] flex flex-row"
+                        >
+                          <input
+                            className="w-full rounded-2xl border-[1.5px] border-gray-400 bg-transparent "
+                            name="input"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.input}
+                          />
+                          <button type="submit" disabled={isSubmitting} className="pl-3 text-gray-500 text-lg">
+                            search
+                          </button>
+                        </form>
+                      )}
+                    </Formik>
+                  </div>
+                </div>
               )}
             </div>
           </div>
